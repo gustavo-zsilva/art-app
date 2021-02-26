@@ -1,0 +1,18 @@
+.homeContainer {
+    display: grid;
+    flex: 1;
+    height: 100vh;
+    /* flex-direction: column; */
+
+
+    margin: auto;
+    max-width: 75rem;
+
+    grid-template-rows: 80px auto 80px;
+    grid-template-columns: 1fr;
+
+    justify-content: center;
+    align-items: center;
+
+    
+}
