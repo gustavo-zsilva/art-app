@@ -1,0 +1,11 @@
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    height: 100vh;
+
+    margin: auto;
+    max-width: 75rem;
+}

@@ -1,23 +1,17 @@
-import Head from 'next/head';
+import { useEffect } from 'react';
 
-import { Header } from '../components/Header';
-import { Tabs } from '../components/Tabs';
-import { Recent } from '../components/Recent';
+import { useRouter } from 'next/router';
 
-import styles from '../styles/pages/Home.module.css';
+export default function Index() {
+    const router = useRouter();
 
-export default function Home() {
-  return (
-    <div className={styles.homeContainer}>
-      <Head>
-        <title>Art App | Início</title>
-      </Head>
+    useEffect(() => {
+        router.push('/recent')
+    }, []);
 
-      <Header />
-
-      <Recent />
-      
-      <Tabs />
-    </div>
-  )
+    return (
+        <div>
+            Main Page
+        </div>
+    );
 }

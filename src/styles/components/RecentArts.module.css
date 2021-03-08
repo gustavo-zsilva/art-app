@@ -1,0 +1,46 @@
+.recentArtsContainer {
+
+    /* Make Masonry layout */
+    column-count: 3;
+    gap: 1rem;
+    /* /-----/ */
+
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.recentArtsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.recentArtsContainer figure {
+    display: inline-block;
+    position: relative;
+
+    margin: 0;
+    border-radius: 4px;
+    
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: .2s;
+}
+
+.recentArtsContainer figure:hover {
+    filter: brightness(0.6);
+}
+
+.recentArtsContainer figure img:hover {
+    transform: scale(1.05);
+}
+
+.recentArtsContainer figure img {
+    display: flex;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    transition: .2s;
+}

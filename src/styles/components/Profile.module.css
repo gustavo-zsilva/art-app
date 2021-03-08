@@ -1,0 +1,45 @@
+.profileContainer {
+    display: flex;
+    flex: 1;
+
+    margin-top: 6rem;
+}
+
+.profileContainer img {
+    width: 6.75rem;
+    height: 6.75rem;
+
+    border-radius: 18px;
+}
+
+.profileContainer .profileImage {
+    box-shadow: -3px 3px 0px 3px rgba(0, 0, 0, 0.08);
+}
+
+.profileContainer div {
+    display: flex;
+    margin-left: 1.2rem;
+
+    flex-direction: column;
+}
+
+.profileContainer div strong {
+    font-size: 1.5rem;
+}
+
+.profileContainer div span {
+    display: flex;
+    align-items: center;
+
+    max-width: 300px;
+    word-break: break-all;
+
+    margin-top: .6rem;
+}
+
+.profileContainer div span img {
+    width: 1.4rem;
+    height: 1.2rem;
+
+    margin-right: .4rem;
+}

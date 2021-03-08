@@ -1,0 +1,31 @@
+.statsContainer {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 5rem;
+}
+
+.statsContainer section {
+    display: flex;
+    flex-direction: column;
+
+    background: var(--platinum);
+
+    padding: 1.8rem 4rem;
+    border-radius: .2rem;
+
+    box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+
+    max-width: 510px;
+    overflow: hidden;
+}
+
+.statsContainer section span {
+    font-size: 2.5rem;
+    color: var(--primary);
+
+    margin-top: .4rem;
+}

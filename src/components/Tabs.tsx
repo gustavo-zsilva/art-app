@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 
@@ -6,39 +6,50 @@ import styles from '../styles/components/Tabs.module.css';
 
 const inlineStyles = {
     borderTop: '3px solid var(--primary)',
-    background: 'var(--platinum)',
     color: 'var(--primary)',
-    fontSize: 18
+    fontSize: 18,
+    transition: '.2s'
 }
 
-const buttonArray = [
+const pagesArray = [
     'Recent',
     'Favorites',
     'Profile'
 ]
 
 export function Tabs() {
-
+    
     const [activeTabId, setActiveTabId] = useState(0);
+
+    useEffect(() => {
+        const sessionActiveTab = sessionStorage.getItem('activeTab') || 0;
+        
+        setActiveTabId(Number(sessionActiveTab));
+    }, [])
+
+    function changeActiveTab(id: number) {
+        sessionStorage.setItem('activeTab', String(id));
+    }
 
     return (
         <div className={styles.tabsContainer}>
-            { buttonArray.map((label, index) => (
+            { pagesArray.map((label, index) => (
                 activeTabId === index ? (
-                    <Link href={label.toLowerCase()}>
-                        <button
-                            key={index}
-                            style={inlineStyles}
-                        >
-                            {label}
-                        </button>
-                    </Link>
+                    <button
+                        key={label}
+                        style={inlineStyles}
+                    >
+                        {label}
+                    </button>
                 ) : (
-                    <Link href={label.toLowerCase()}>
+                    
+                    <Link
+                        key={label}
+                        href={label.toLowerCase()}
+                    >
                         <button
-                            key={index}
                             id={String(index)}
-                            onClick={(e) => setActiveTabId(Number(e.currentTarget.id))}
+                            onClick={(e) => changeActiveTab(Number(e.currentTarget.id))}
                         >
                             {label}
                         </button>

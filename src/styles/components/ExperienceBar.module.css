@@ -1,0 +1,29 @@
+.experienceBarContainer {
+    display: flex;
+
+    align-items: baseline;
+    margin-top: 1rem;
+}
+
+.experienceBarContainer > div {
+    flex: 1;
+    margin: 0 1rem;
+    background: var(--platinum);
+    height: 5px;
+    border-radius: 4px;
+
+    position: relative;
+}
+
+.experienceBarContainer > div > div {
+    background: var(--green);
+    height: 4px;
+    
+    transition: .4s;
+}
+
+span.currentExperience {
+    position: absolute;
+    margin-top: .6rem;
+    transform: translateX(-50%);
+}

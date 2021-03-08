@@ -11,7 +11,9 @@
     --platinum:#EBE9E9;
     --background:#F3F8F2;
     --darker-background:#bec0bd;
+    --lighter-background: #f1f1f1;
     --text:#797979;
+    --title:#275f86;
     --green:#4CD62B;
 }
 
@@ -30,6 +32,9 @@
 body {
     background: var(--background);
     color: var(--text);
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 body, input, textarea, button {

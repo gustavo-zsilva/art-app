@@ -1,0 +1,29 @@
+.favoriteArtsContainer {
+
+    column-count: 4;
+    gap: 1rem;
+
+    width: 100%;
+
+}
+
+.favoriteArtsContainer figure {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.favoriteArtsContainer figure:hover {
+    filter: brightness(0.6);
+    transform: scale(1.05);
+}
+
+.favoriteArtsContainer figure img {
+    width: 100%;
+
+    border-radius: 4px;
+    box-sizing: border-box;
+}

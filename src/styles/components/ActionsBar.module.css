@@ -1,0 +1,11 @@
+.actionsBarContainer {
+    display: flex;
+    height: 60px;
+    background-color: var(--platinum);
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+}

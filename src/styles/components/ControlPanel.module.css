@@ -1,0 +1,63 @@
+.controlPanelContainer {
+    display: flex;
+    flex-direction: column;
+
+    margin: 6rem 0 2rem 6rem;
+    background: var(--platinum);
+    border-radius: 4px;
+
+    box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 0.08);
+
+    padding: 1.8rem;
+}
+
+.controlPanelContainer header {
+    text-align: center;
+
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 1.8;
+
+    margin-bottom: 1.5rem;
+}
+
+.controlPanelContainer section {
+    display: flex;
+
+    position: relative;
+    
+    align-items: flex-end;
+    justify-content: space-evenly;
+    height: 1rem;
+
+    margin-bottom: 3rem;
+}
+
+.controlPanelContainer section label {
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    padding: .2rem;
+    padding-right: .6rem;
+
+    position: absolute;
+    left: 0;
+
+    width: 140px;
+
+    transition: .2s;
+}
+
+.controlPanelContainer section input {
+    border: 0;
+    border-bottom: 2px solid var(--primary);
+    background: transparent;
+    padding: .2rem;
+    margin-left: 90px;
+    padding-left: 1rem;
+}
+
+.controlPanelContainer section input:focus + label {
+    color: var(--primary);
+    font-size: 1.04rem;
+}
