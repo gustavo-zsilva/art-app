@@ -1,0 +1,94 @@
+.dropzoneWrapper {
+    display: flex;
+
+    height: 400px;
+
+    flex: 1;
+}
+
+.dropzoneContainer {
+    display: flex;
+
+    border: 4px dashed #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+
+    width: 400px;
+    height: 100%;
+    
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.2s ease;
+}
+
+.progressPanel {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    
+    height: 100%;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    overflow: auto;
+}
+
+.progressPanel li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem;
+}
+
+.progressPanel li div:first-child {
+    display: flex;
+    align-items: center;
+
+    margin-right: 2rem;
+}
+
+.progressPanel li div:first-child .image {
+    width: 2.3rem;
+    height: 2.3rem;
+
+    border-radius: 4px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+
+    margin-right: .7rem;
+}
+
+.progressPanel li div.fileInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.progressPanel li div.fileInfo span,
+.progressPanel li div.fileInfo button {
+    font-size: .9rem;
+
+    margin-top: .1rem;
+}
+
+.progressPanel li div.fileInfo button {
+    color: #e57878;
+}
+
+.progressPanel li div:last-child {
+    display: flex;
+}
+
+.progressPanel li button {
+    background-color: transparent;
+    border: 0; 
+}
+
+.progressPanel li button.link {
+    font-size: 0;
+}

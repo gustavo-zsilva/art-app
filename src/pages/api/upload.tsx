@@ -7,7 +7,14 @@ const upload = multer({
     storage: multer.diskStorage({
         destination: 'public/uploads',
         filename: (req, file, cb) => cb(null,  Date.now() + '-' + file.originalname),
-    })
+    }),
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.includes('image')) {
+            cb(null, true);
+        } else {
+            cb(null, false);
+        }
+    }
 })
 
 const apiRoute = nextConnect({
@@ -20,7 +27,7 @@ const apiRoute = nextConnect({
     },
 })
 
-const uploadMiddleware = upload.array('artFiles');
+const uploadMiddleware = upload.single('artFiles');
 
 apiRoute.use(uploadMiddleware);
 
