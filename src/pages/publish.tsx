@@ -1,9 +1,11 @@
 import Head from 'next/head';
-import { Layout } from "../components/Layout";
 
+import { Layout } from "../components/Layout";
 import { Files } from '../components/Files';
 
 import styles from '../styles/pages/Publish.module.css';
+
+import Cookies from 'js-cookie';
 
 export default function Publish() {
     return (
@@ -18,5 +20,18 @@ export default function Publish() {
             
         </Layout>
     )
+}
+
+export const getServerSideProps = async () => {
+    const uploadedFiles = Cookies.get('uploadedFiles');
+
+    console.log(uploadedFiles);
+    
+
+    return {
+        props: {
+
+        }
+    }
 }
 
