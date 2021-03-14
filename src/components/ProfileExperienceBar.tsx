@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { DataContext } from '../contexts/DataContext';
 import styles from '../styles/components/ExperienceBar.module.css';
 
-export function ExperienceBar() {
+export function ProfileExperienceBar() {
     const { currentExperience, totalExperience } = useContext(DataContext);
 
     const experienceToPercentage = (currentExperience * 100) / totalExperience;

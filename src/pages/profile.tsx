@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import styles from '../styles/pages/Profile.module.css';
 
-import { ExperienceBar } from '../components/ExperienceBar';
+import { ProfileExperienceBar } from '../components/ProfileExperienceBar';
 import { Profile as ProfileComponent } from '../components/Profile';
 import { Stats } from '../components/Stats';
 import { Layout } from '../components/Layout';
@@ -17,7 +17,7 @@ export default function Profile() {
                     <title>Profile | Art App</title>
                 </Head>
                 
-                <ExperienceBar />
+                <ProfileExperienceBar />
 
                 <div className={styles.profileDetails}>
                     <div>

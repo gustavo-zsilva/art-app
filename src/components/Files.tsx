@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import styles from '../styles/components/Files.module.css';
+import experienceStyles from '../styles/components/ExperienceBar.module.css';
 
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 import Dropzone from 'react-dropzone';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -33,7 +34,11 @@ export function Files() {
     // To avoid triggering react hooks re-rendering every time, here I use
     // a traditional array to make these changes, just to concat these to
     // the "User View" in the end of the cicle.
-    let hiddenFilesArray = []
+    let hiddenFilesArray = [];
+
+    const experienceEarned = uploadedFiles.length * 10;
+    const maxExperience = 100;
+    let experiencePercentage = (100 * experienceEarned) / maxExperience;
 
     useEffect(() => {
         if (uploadedFiles.length <= 0) return;
@@ -131,7 +136,7 @@ export function Files() {
 
 
     return (
-        <div>
+        <div className={styles.filesContainer}>
             <form
                 encType="multipart/form-data"
             >
@@ -139,7 +144,7 @@ export function Files() {
                     <Dropzone
                         accept="image/*"
                         onDropAccepted={previewFiles}
-                        multiple
+                        
                     >
                         { ({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
                             <div
@@ -188,24 +193,37 @@ export function Files() {
                                     {file.uploaded && <MdCheckCircle size={24} color="#6FDFD1" />}
 
                                     {file.error && <MdError size={24} color="#e57878" />}
-                                    
-
                                 </div>
                             </li>
                         ))}
                         
                         {uploadedFiles.length > 0 && (
                             <div className={styles.buttonContainer}>
-                                <button id="send">Enviar</button>
+                                <button id="finish">Concluir</button>
                                 <button id="delete" onClick={handleDeleteAllFiles}>Excluir tudo</button>
                             </div>
                         )}
 
                     </ul>
-
                 </div>
             </form>
-
+            
+            <div className={styles.experienceStatus}>
+                <h3>Experiência a ganhar:</h3>
+                <div className={experienceStyles.experienceBarContainer}>
+                    <span>0 xp</span>
+                    <div>
+                        <div style={{ width: `${experiencePercentage > maxExperience ? experiencePercentage = 100 : experiencePercentage}%` }} />
+                        <span
+                            className={experienceStyles.currentExperience}
+                            style={{ left: `${experiencePercentage > maxExperience ? '100' : experiencePercentage}%` }}
+                        >
+                            {experienceEarned} xp
+                        </span>
+                    </div>
+                    <span>{maxExperience} xp</span>
+                </div>
+            </div>
         </div>
     );
 }

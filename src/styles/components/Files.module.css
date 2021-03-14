@@ -1,3 +1,12 @@
+.filesContainer {
+    display: flex;
+    flex-direction: column;
+
+    /* justify-content: center; */
+    
+    margin: 2rem auto;
+}
+
 .dropzoneWrapper {
     display: flex;
 
@@ -7,6 +16,16 @@
 
     border-radius: 4px;
     box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 0.03);
+}
+
+.experienceStatus {
+    margin-top: 1.2rem;
+    border-left: 2px solid var(--primary);
+    padding-left: .8rem;
+}
+
+.experienceStatus h3 {
+    font-weight: 500;
 }
 
 .dropzoneContainer {
@@ -128,7 +147,7 @@
     margin-top: 1rem;
 }
 
-.progressPanel .buttonContainer button[id=send] {
+.progressPanel .buttonContainer button[id=finish] {
     background: var(--primary);
     color: var(--background);
 }
@@ -138,7 +157,7 @@
     border: 2px solid var(--platinum);
 }
 
-.progressPanel .buttonContainer button[id=send]:hover {
+.progressPanel .buttonContainer button[id=finish]:hover {
     background: #2d73a5;
 }
 
