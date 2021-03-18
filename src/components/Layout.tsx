@@ -14,8 +14,6 @@ export function Layout({ children }: LayoutProps) {
             <Header />
 
             {children}
-
-            <Tabs />
         </div>
     );
 }

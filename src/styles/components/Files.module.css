@@ -44,6 +44,13 @@
     transition: 0.2s ease;
 }
 
+.totalFilesUploaded {
+    border-left: 3px solid var(--primary);
+    padding-left: .3rem;
+    padding-right: .6rem;
+    margin-bottom: .8rem;
+}
+
 .progressPanel {
     display: flex;
     flex-direction: column;
@@ -55,7 +62,7 @@
 
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: .8rem;
 
     overflow: auto;
     scrollbar-width: none;
@@ -71,7 +78,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .8rem;
+}
+
+.progressPanel li + li {
+    padding-top: .8rem;
 }
 
 .progressPanel li div:first-child {
@@ -127,7 +137,8 @@
 .progressPanel .buttonContainer {
     display: flex;
     flex-direction: column;
-    margin: .8rem;
+
+    margin-top: 1rem;
 }
 
 .progressPanel .buttonContainer button {

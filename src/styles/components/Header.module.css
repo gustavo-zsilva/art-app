@@ -35,6 +35,7 @@
 
 .headerContainer .buttonContainer button:hover {
     padding: .8rem 1.2rem;
+    background: #2d73a5;
 }
 
 .headerContainer .profilePreview {

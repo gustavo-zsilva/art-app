@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import styles from '../styles/components/Files.module.css';
 import experienceStyles from '../styles/components/ExperienceBar.module.css';
@@ -13,6 +13,7 @@ import { uniqueId } from 'lodash';
 import filesize from 'filesize';
 
 import Cookies from 'js-cookie';
+import { FilesContext } from '../contexts/FilesContext';
 
 
 interface FileProps {
@@ -30,21 +31,35 @@ interface FileProps {
 export function Files() {
 
     const [uploadedFiles, setUploadedFiles] = useState([]);
+    const { uploadedFiles: cookiesUploadedFiles } = useContext(FilesContext);
 
     // To avoid triggering react hooks re-rendering every time, here I use
     // a traditional array to make these changes, just to concat these to
     // the "User View" in the end of the cicle.
     let hiddenFilesArray = [];
 
-    const experienceEarned = uploadedFiles.length * 10;
+    const totalFilesUploaded = uploadedFiles.length;
+
+    const experienceEarned = totalFilesUploaded * 10;
     const maxExperience = 100;
-    let experiencePercentage = (100 * experienceEarned) / maxExperience;
+    const experiencePercentage = (100 * experienceEarned) / maxExperience;
 
     useEffect(() => {
         if (uploadedFiles.length <= 0) return;
 
         Cookies.set('uploadedFiles', JSON.stringify(uploadedFiles));
+
     }, [uploadedFiles])
+
+    useEffect(() => {
+        
+        setUploadedFiles(cookiesUploadedFiles || []);
+        console.log('====================================');
+        // console.log(typeof arrayCookieFiles);
+        console.log('====================================');
+        // console.log(cookiesUploadedFiles || 'xd');
+        
+    }, [])
     
 
     async function processUpload(uploadedFile: FileProps) {
@@ -160,6 +175,10 @@ export function Files() {
 
                     <ul className={styles.progressPanel}>
 
+                        <div className={styles.totalFilesUploaded}>
+                            <span>{totalFilesUploaded} file(s) uploaded</span>
+                        </div>
+
                         {uploadedFiles.map((file: FileProps) => (
                             <li key={file.id}>
 
@@ -213,7 +232,7 @@ export function Files() {
                 <div className={experienceStyles.experienceBarContainer}>
                     <span>0 xp</span>
                     <div>
-                        <div style={{ width: `${experiencePercentage > maxExperience ? experiencePercentage = 100 : experiencePercentage}%` }} />
+                        <div style={{ width: `${experiencePercentage > maxExperience ? '100' : experiencePercentage}%` }} />
                         <span
                             className={experienceStyles.currentExperience}
                             style={{ left: `${experiencePercentage > maxExperience ? '100' : experiencePercentage}%` }}

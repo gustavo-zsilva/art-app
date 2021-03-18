@@ -2,62 +2,78 @@ import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 
+import { MdPhoto, MdPhotoLibrary, MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+import { GiStarAltar } from 'react-icons/gi';
+
 import styles from '../styles/components/Tabs.module.css';
 
-const inlineStyles = {
-    borderTop: '3px solid var(--primary)',
+const buttonStyles = {
+    borderBottom: '3px solid var(--primary)',
     color: 'var(--primary)',
-    fontSize: 18,
+    fontSize: 15,
     transition: '.2s'
 }
 
-const pagesArray = [
-    'Recent',
-    'Favorites',
-    'Profile'
-]
-
 export function Tabs() {
     
-    const [activeTabId, setActiveTabId] = useState(0);
+    const [activeTab, setActiveTab] = useState('gallery');
 
     useEffect(() => {
-        const sessionActiveTab = sessionStorage.getItem('activeTab') || 0;
+        const sessionActiveTab = sessionStorage.getItem('activeTab');
         
-        setActiveTabId(Number(sessionActiveTab));
+        setActiveTab(sessionActiveTab);
     }, [])
 
-    function changeActiveTab(id: number) {
-        sessionStorage.setItem('activeTab', String(id));
-    }
+    useEffect(() => {
+        sessionStorage.setItem('activeTab', activeTab);
+    }, [activeTab])
 
     return (
         <div className={styles.tabsContainer}>
-            { pagesArray.map((label, index) => (
-                activeTabId === index ? (
-                    <button
-                        key={label}
-                        style={inlineStyles}
-                    >
-                        {label}
-                    </button>
-                ) : (
+
+            <Link href="/recent">
+                <button
+                    onClick={() => setActiveTab('gallery')}
+                    style={activeTab === 'gallery' ? buttonStyles : null}
+                >
+                    {activeTab === 'gallery' ? (
+                        <span>
+                            <MdPhotoLibrary color="var(--primary)" size={32} />
+                            Gallery
+                        </span>
+                    ) : <MdPhoto color="var(--platinum)" size={32} />}
                     
-                    <Link
-                        key={label}
-                        href={label.toLowerCase()}
-                    >
-                        <button
-                            id={String(index)}
-                            onClick={(e) => changeActiveTab(Number(e.currentTarget.id))}
-                        >
-                            {label}
-                        </button>
-                    </Link>
-                )
-                   
-                )
-            ) }
+                </button>
+            </Link>
+
+            <Link href="/favorites">
+                <button
+                    onClick={() => setActiveTab('favorites')}
+                    style={activeTab === 'favorites' ? buttonStyles : null}
+                >
+                    {activeTab === 'favorites' ? (
+                        <span>
+                            <MdFavorite color={"#ff7575"} size={32} />
+                            Favorites
+                        </span>
+                    ) : <MdFavoriteBorder color="var(--platinum)" size={32} />}
+                </button>
+            </Link>
+
+            <Link href="/popular">
+                <button
+                    onClick={() => setActiveTab('popular')}
+                    style={activeTab === 'profile' ? buttonStyles : null}
+                >
+                  {activeTab === 'popular' ? (
+                        <span>
+                            <GiStarAltar color={"#ff95fa"} size={32} />
+                            Popular
+                        </span>
+                    ) : <GiStarAltar color="var(--platinum)" size={32} />}   
+                </button>
+            </Link>
+
         </div>
     );
 }
