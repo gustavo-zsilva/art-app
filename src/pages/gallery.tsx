@@ -36,7 +36,7 @@ export default function Gallery(props: RecentProps) {
 }
 
 export const getServerSideProps = async () => {
-  const response = await axios.get('http://localhost:3000/api/upload');
+  const response = await axios.get('http://localhost:3000/api/images');
 
   return {
     props: {

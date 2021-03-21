@@ -6,7 +6,7 @@ export default function Index() {
     const router = useRouter();
 
     useEffect(() => {
-        router.push('/recent')
+        router.push('/gallery')
     }, []);
 
     return (

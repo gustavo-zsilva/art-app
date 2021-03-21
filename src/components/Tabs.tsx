@@ -16,10 +16,10 @@ const buttonStyles = {
 
 export function Tabs() {
     
-    const [activeTab, setActiveTab] = useState('gallery');
+    const [activeTab, setActiveTab] = useState('');
 
     useEffect(() => {
-        const sessionActiveTab = sessionStorage.getItem('activeTab');
+        const sessionActiveTab = sessionStorage.getItem('activeTab') || 'gallery';
         
         setActiveTab(sessionActiveTab);
     }, [])
@@ -31,7 +31,7 @@ export function Tabs() {
     return (
         <div className={styles.tabsContainer}>
 
-            <Link href="/recent">
+            <Link href="/gallery">
                 <button
                     onClick={() => setActiveTab('gallery')}
                     style={activeTab === 'gallery' ? buttonStyles : null}
@@ -63,7 +63,7 @@ export function Tabs() {
             <Link href="/popular">
                 <button
                     onClick={() => setActiveTab('popular')}
-                    style={activeTab === 'profile' ? buttonStyles : null}
+                    style={activeTab === 'popular' ? buttonStyles : null}
                 >
                   {activeTab === 'popular' ? (
                         <span>

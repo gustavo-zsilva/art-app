@@ -82,7 +82,7 @@ export function Files() {
         }
 
         // Send the request to the server (actually upload the file)
-        await axios.post('/api/upload', data, config)
+        await axios.post('/api/images/upload', data, config)
             .then(res => {
                 if (!res.data.success) return;
 

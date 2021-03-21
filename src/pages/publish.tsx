@@ -29,9 +29,9 @@ export default function Publish(props: PublishProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { uploadedFiles: cookiesFiles } = context.req.cookies;
-    const stringUploadedFiles = JSON.stringify(cookiesFiles);
-    const uploadedFiles = JSON.parse(stringUploadedFiles);
+    // const { uploadedFiles: cookiesFiles } = context.req.cookies;
+    // const stringUploadedFiles = JSON.stringify(cookiesFiles);
+    // const uploadedFiles = JSON.parse(stringUploadedFiles);
     
 
     return {
