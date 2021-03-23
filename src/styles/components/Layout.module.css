@@ -9,3 +9,10 @@
     margin: auto;
     max-width: 75rem;
 }
+
+@media (max-width: 1220px) {
+    .layoutContainer {
+        margin: auto 2rem;
+        flex-direction: column-reverse;
+    }
+}

@@ -1,9 +1,12 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 import axios from 'axios';
 import { Layout } from '../../components/Layout';
+import { Votes } from '../../components/Votes';
+
+import styles from '../../styles/pages/Post.module.css';
+import { ImageDetails } from '../../components/ImageDetails';
+import { ImagesProvider } from '../../contexts/ImagesContext';
 
 export default function Post({ data }) {
     // const router = useRouter();
@@ -13,15 +16,19 @@ export default function Post({ data }) {
     
 
     return (
+        <ImagesProvider imageData={data}>
         <Layout>
             <Head>
                 <title>Username | Art App</title>
             </Head>
 
-            <div>
+            <div className={styles.postContainer}>
+                <Votes />
                 <img src={parsedImgPath} alt=""/>
+                <ImageDetails />
             </div>
         </Layout>
+        </ImagesProvider>
     );
 }
 
@@ -40,7 +47,7 @@ async function getAllPostIds() {
 
 async function getImageData(id: string) {
     const imageData = await axios.get(`http://localhost:3000/api/images/${id}`);
-    const data = imageData.data.data;
+    const data = imageData.data;
 
     return data;
 }
@@ -55,11 +62,11 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const data: [] = await getImageData(params.id);
+    const data: { data: [], success: boolean } = await getImageData(params.id);
 
     return {
         props: {
-            data,
+            data: data.data,
         }
     }
 }

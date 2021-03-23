@@ -4,6 +4,11 @@ const ImageSchema: Schema = new Schema({
     img: {
         path: String,
         contentType: String,
+    },
+    author: String,
+    votes: {
+        upvotes: Number,
+        downvotes: Number,
     }
 });
 

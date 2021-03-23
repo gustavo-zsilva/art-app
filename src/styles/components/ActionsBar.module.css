@@ -1,5 +1,11 @@
 .actionsBarContainer {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+
+    z-index: 2;
+
     height: 60px;
     background-color: var(--platinum);
 
@@ -8,4 +14,13 @@
     bottom: 0;
     right: 0;
     left: 0;
+
+    transition: .2s;
+}
+
+.actionsBarContainer div button {
+    border: 0;
+    background: transparent;
+
+    padding-right: .6rem;
 }

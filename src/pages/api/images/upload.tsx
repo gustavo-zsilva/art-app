@@ -52,6 +52,11 @@ apiRoute.post((req: MulterRequest, res: NextApiResponse) => {
         img: {
             path: filePath,
             contentType: req.file.mimetype,
+        },
+        author: 'Gustavo Silva',
+        votes: {
+            upvotes: 0,
+            downvotes: 0,
         }
     })
 

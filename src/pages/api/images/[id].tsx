@@ -29,9 +29,25 @@ apiRoute.get(async (req: ImageRequest, res: NextApiResponse) => {
     try {
         const imageData = await Image.findById(id);
 
-        res.status(200).json({ success: true, data: imageData });
+        res.status(201).json({ success: true, data: imageData });
     } catch (err) {
-        res.status(200).json({ success: false });
+        res.status(500).json({ success: false });
+    }
+})
+
+apiRoute.patch(async (req: ImageRequest, res: NextApiResponse) => {
+    const Image = req.image;
+
+    const {
+        id
+    } = req.query;
+
+    try {
+        const patchedImage = await Image.findOneAndUpdate(id, req.body);
+
+        res.status(201).json({ success: true, data: patchedImage });
+    } catch (err) {
+        res.status(500).json({ success: false });
     }
 })
 

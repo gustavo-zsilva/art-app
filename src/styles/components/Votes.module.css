@@ -1,0 +1,26 @@
+.votesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    justify-content: center;
+    
+    padding: 1rem;
+}
+
+.votesContainer span {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: .2rem;
+}
+
+.votesContainer button {
+    border: 0;
+    background: transparent;
+    padding: .4rem;
+}
+
+.votesContainer img {
+    width: 3rem;
+    height: 3rem;
+}
