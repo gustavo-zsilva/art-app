@@ -8,7 +8,8 @@ export default async function connectToDatabase(uri: string) {
 
     mongoose.connect(uri, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false,
     })
     .then(() => console.log('Connected to Database Successfully.'))
     .catch(err => console.error(err))

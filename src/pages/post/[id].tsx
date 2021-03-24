@@ -6,17 +6,15 @@ import { Votes } from '../../components/Votes';
 
 import styles from '../../styles/pages/Post.module.css';
 import { ImageDetails } from '../../components/ImageDetails';
-import { ImagesProvider } from '../../contexts/ImagesContext';
+
+import { ImageProvider } from '../../contexts/ImageContext';
 
 export default function Post({ data }) {
-    // const router = useRouter();
-    // const { id } = router.query;
-    
+    const image = data;
     const parsedImgPath = data.img.path.replace('public', '');
-    
 
     return (
-        <ImagesProvider imageData={data}>
+        <ImageProvider image={image}>
         <Layout>
             <Head>
                 <title>Username | Art App</title>
@@ -28,7 +26,7 @@ export default function Post({ data }) {
                 <ImageDetails />
             </div>
         </Layout>
-        </ImagesProvider>
+        </ImageProvider>
     );
 }
 
@@ -62,11 +60,12 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const data: { data: [], success: boolean } = await getImageData(params.id);
+    const response: { data: [], success: boolean } = await getImageData(params.id);
+    const data = response.data;
 
     return {
         props: {
-            data: data.data,
+            data,
         }
     }
 }

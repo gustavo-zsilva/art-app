@@ -9,6 +9,10 @@ const ImageSchema: Schema = new Schema({
     votes: {
         upvotes: Number,
         downvotes: Number,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now(),
     }
 });
 

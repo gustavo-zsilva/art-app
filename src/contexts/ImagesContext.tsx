@@ -22,14 +22,13 @@ interface ImagesContextProps {
     success: boolean,
     handleAddUpvote: (id: string) => void;
     handleAddDownvote: (id: string) => void;
-    getSingleImageData: (id: string) => ImageProps;
 }
 
 interface ImagesProviderProps {
     children: ReactNode;
     imageData: {
         success: boolean,
-        data: ImageProps[] | ImageProps,
+        data: ImageProps[],
     };
 }
 
@@ -72,7 +71,6 @@ export function ImagesProvider({ children, imageData }: ImagesProviderProps) {
                 success,
                 handleAddUpvote,
                 handleAddDownvote,
-                getSingleImageData,
             }}
         >
             {children}
